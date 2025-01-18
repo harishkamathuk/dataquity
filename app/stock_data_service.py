@@ -31,9 +31,22 @@ def insert_stock_data(symbol, transformed_data):
         None
     """
     try:
+        # Validate the required keys in transformed_data
+        required_keys = ['name', 'price', 'volume', 'market_cap', 'last_trade_time']
+        for key in required_keys:
+            if key not in transformed_data:
+                logger.error(f"Missing key {key} in transformed data for {symbol}.")
+                return  # Exit if any required key is missing
+
         # Get a database connection from the manager
         connection = db_manager.get_connection()
         cursor = connection.cursor()
+
+        # Check if stock data for the symbol already exists (to prevent duplicates)
+        cursor.execute("SELECT 1 FROM stocks WHERE symbol = %s AND date = %s", (symbol, transformed_data['last_trade_time']))
+        if cursor.fetchone():
+            logger.info(f"Data for {symbol} already exists for {transformed_data['last_trade_time']}. Skipping insertion.")
+            return  # Skip insertion if data already exists
 
         logger.info(f"Inserting transformed data for {symbol}")
         logger.debug(f"Transformed data for {symbol}: {transformed_data}")
@@ -64,9 +77,13 @@ def insert_stock_data(symbol, transformed_data):
         connection.commit()
         logger.info(f"Data for {symbol} inserted successfully!")
 
+    except psycopg2.DatabaseError as db_error:
+        logger.error(f"Database error inserting data for {symbol}: {db_error}")
+        connection.rollback()  # Rollback in case of database error
+
     except Exception as e:
-        logger.error(f"Error inserting data into the database: {e}")
-        connection.rollback()  # Rollback in case of error
+        logger.error(f"Unexpected error inserting data for {symbol}: {e}")
+        connection.rollback()  # Rollback for unexpected errors
 
     finally:
         # Always close the cursor and connection using the connection manager

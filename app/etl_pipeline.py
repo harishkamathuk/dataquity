@@ -85,6 +85,6 @@ def run_etl(symbol):
 
 
 if __name__ == "__main__":
-    symbol = "MSFT"  # Example: Apple stock
+    symbol = "NVDA"  
     run_etl(symbol)
 

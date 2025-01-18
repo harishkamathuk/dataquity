@@ -1,0 +1,52 @@
+| Rank | Company Name                          | Symbol | Market Cap ($B) |
+|------|---------------------------------------|--------|-----------------|
+| 1    | Apple Inc.                           | AAPL   | 3,580.18        |
+| 2    | NVIDIA Corporation                  | NVDA   | 3,328.44        |
+| 3    | Microsoft Corporation               | MSFT   | 3,114.84        |
+| 4    | Alphabet Inc. (Class A)             | GOOG   | 2,364.59        |
+| 5    | Amazon.com, Inc.                   | AMZN   | 2,302.16        |
+| 6    | Meta Platforms, Inc.                | META   | 1,554.73        |
+| 7    | Tesla, Inc.                         | TSLA   | 1,267.14        |
+| 8    | Broadcom Inc.                       | AVGO   | 1,051.42        |
+| 9    | Berkshire Hathaway Inc. (Class A)   | BRK.A  | 953.14          |
+| 10   | Eli Lilly and Company               | LLY    | 759.36          |
+| 11   | Walmart Inc.                        | WMT    | 746.78          |
+| 12   | JPMorgan Chase & Co.                | JPM    | 675.29          |
+| 13   | Visa Inc.                           | V      | 603.43          |
+| 14   | UnitedHealth Group Incorporated      | UNH    | 479.18          |
+| 15   | Exxon Mobil Corporation             | XOM    | 468.25          |
+| 16   | Mastercard Incorporated             | MA     | 463.20          |
+| 17   | Oracle Corporation                 | ORCL   | 432.13          |
+| 18   | Costco Wholesale Corporation        | COST   | 415.91          |
+| 19   | The Home Depot, Inc.               | HD     | 387.30          |
+| 20   | The Procter & Gamble Company        | PG     | 373.46          |
+| 21   | Netflix, Inc.                      | NFLX   | 358.08          |
+| 22   | Bank of America Corporation         | BAC    | 346.12          |
+| 23   | Johnson & Johnson                  | JNJ    | 342.03          |
+| 24   | AbbVie Inc.                        | ABBV   | 309.55          |
+| 25   | Salesforce, Inc.                  | CRM    | 304.25          |
+| 26   | Chevron Corporation                | CVX    | 275.21          |
+| 27   | The Coca-Cola Company              | KO     | 263.12          |
+| 28   | Merck & Co., Inc.                  | MRK    | 251.12          |
+| 29   | Accenture Public Limited Company    | ACN    | 236.06          |
+| 30   | Wells Fargo & Company              | WFC    | 234.05          |
+| 31   | Cisco Systems, Inc.                | CSCO   | 233.95          |
+| 32   | Thermo Fisher Scientific Incorporated | TMO    | 207.64          |
+| 33   | American Express Company            | AXP    | 206.59          |
+| 34   | International Business Machines Corporation | IBM    | 203.20          |
+| 35   | McDonald's Corporation             | MCD    | 202.31          |
+| 36   | Morgan Stanley                     | MS     | 198.88          |
+| 37   | Linde Public Limited Company        | LIN    | 197.20          |
+| 38   | Abbott Laboratories               | ABT    | 194.80          |
+| 39   | Advanced Micro Devices, Inc.       | AMD    | 188.31          |
+| 40   | General Electric Company           | GE     | 185.82          |
+| 41   | Philip Morris International Inc.   | PM     | 182.12          |
+| 42   | Adobe Inc.                         | ADBE   | 178.69          |
+| 43   | The Goldman Sachs Group, Inc.      | GS     | 175.77          |
+| 44   | Intuit Inc.                        | INTU   | 174.51          |
+| 45   | Qualcomm Incorporated              | QCOM   | 174.40          |
+| 46   | Texas Instruments Incorporated     | TXN    | 173.46          |
+| 47   | Danaher Corporation                | DHR    | 169.79          |
+| 48   | Lockheed Martin Corporation        | LMT    | 153.73          |
+| 49   | Wells Fargo & Company (Class B)    | WFC.B  | 154.67          |
+| 50   | Home Depot, Inc. (Class B)         | HD.B   | 147.62          |
