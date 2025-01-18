@@ -1,6 +1,6 @@
 # 🌟 DataQuity: Simplified Stock Market Data Pipeline
 
-**DataQuity** is a cutting-edge ETL (Extract, Transform, Load) pipeline tailored for 📈 stock market data. It seamlessly integrates 🐳 Dagger, 🛢️ Neon.tech, and 🌐 Vercel to fetch, process, and store data efficiently. Built to be 🧩 modular, 📏 scalable, and 💰 cost-effective, it empowers users to unlock financial insights effortlessly.
+**DataQuity** is a cutting-edge ETL (Extract, Transform, Load) pipeline tailored for 📈 stock market data. It seamlessly integrates 🐳 Dagger, 🛢️ Render PostgreSQL, and 🌐 Render to fetch, process, and store data efficiently. Built to be 🧩 modular, 📏 scalable, and 💰 cost-effective, it empowers users to unlock financial insights effortlessly.
 
 ---
 
@@ -17,8 +17,8 @@ DataQuity leverages ☁️ serverless technologies to create a robust and reliab
 ## 🛠️ Tech Stack
 
 - **[🐳 Dagger](https://dagger.io/)**: Simplifies workflow orchestration.
-- **[🛢️ Neon.tech](https://neon.tech/)**: Serverless PostgreSQL hosting.
-- **[🌐 Vercel](https://vercel.com/)**: Ensures smooth serverless deployments.
+- **[🛢️ Render PostgreSQL](https://render.com/)**: Managed PostgreSQL database hosting.
+- **[🌐 Render](https://render.com/)**: Cloud-based deployment for API and backend.
 - **🐍 Python**: Core programming language.
 - **🤖 GitHub Actions**: Automates CI/CD pipelines.
 
@@ -28,7 +28,7 @@ DataQuity leverages ☁️ serverless technologies to create a robust and reliab
 
 ### 📋 Prerequisites
 
-- 🐍 Python 3.9+
+- 🐍 Python 3.10+
 - 🐙 Git
 - 🐳 Dagger CLI ([installation guide](https://docs.dagger.io/install))
 
@@ -54,7 +54,7 @@ DataQuity leverages ☁️ serverless technologies to create a robust and reliab
 
    ```env
    API_KEY=your_stockdata_api_key
-   DATABASE_URL=your_neon_postgresql_connection_string
+   DATABASE_URL=your_render_postgresql_connection_string
    ```
 
 ---
@@ -70,15 +70,16 @@ DataQuity leverages ☁️ serverless technologies to create a robust and reliab
 2. **Access API data**:
 
    ```bash
-   curl http://localhost:8000/api/stock-data
+   curl http://localhost:5000/api/stocks/AVGO
    ```
 
 ---
 
 ## 📖 API Endpoints
 
-- **GET /api/stock-data**: Fetches the latest market data.
-- **GET /api/stock-data/<symbol>**: Retrieves data for a specific stock symbol.
+- **GET /api/stocks**: Fetches a list of available stock symbols.
+- **GET /api/stocks/<symbol>**: Retrieves data for a specific stock symbol.
+- **POST /api/stocks/<symbol>/etl**: Triggers the ETL process for the given stock symbol.
 
 ---
 
@@ -113,8 +114,7 @@ Licensed under the 🆓 MIT License. See [📜 LICENSE](LICENSE) for details.
 
 - [📊 StockData.org](https://www.stockdata.org/): For reliable market data.
 - [🐳 Dagger](https://dagger.io/): For effortless workflow orchestration.
-- [🛢️ Neon.tech](https://neon.tech/): For scalable database hosting.
-- [🌐 Vercel](https://vercel.com/): For seamless deployment.
+- [🛢️ Render](https://render.com/): For hosting and database services.
 
 ---
 
@@ -122,3 +122,17 @@ Licensed under the 🆓 MIT License. See [📜 LICENSE](LICENSE) for details.
 
 - 🐙 GitHub: [harishkamathuk](https://github.com/harishkamathuk)
 - 📧 Email: quiet-choosy-candy@duck.com
+
+---
+
+### Updates Made:
+1. **Replaced mentions of Vercel with Render** across the document.
+2. **Updated the database references** to Render PostgreSQL.
+3. Adjusted example usage commands to align with the current state of the application.
+
+You can commit this with:
+```bash
+git add README.md
+git commit -m "📚 Update README to reflect migration from Vercel to Render"
+git push origin main
+```
