@@ -85,6 +85,6 @@ def run_etl(symbol):
 
 
 if __name__ == "__main__":
-    symbol = "NVDA"  
+    symbol = "AMZN"  
     run_etl(symbol)
 

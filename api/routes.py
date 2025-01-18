@@ -1,7 +1,11 @@
+import threading  # Import threading for asynchronous ETL processing
 from flask import Blueprint, jsonify, request
+
+from config import Config
+
 from app.stock_data_service import insert_stock_data
 from app.etl_pipeline import run_etl
-from config import Config
+
 from app.__utils.logger import get_logger
 from app.__utils.db_connection_manager import DatabaseConnectionManager
 
@@ -36,7 +40,7 @@ def get_stock_data(symbol):
 
         # Query to fetch stock data for the given symbol
         query = """
-        SELECT symbol, company_name, price, volume, market_cap, date
+        SELECT symbol, company_name, price, volume, market_cap, date, percentage_change, daily_price_range, fiftytwo_week_range
         FROM stocks
         WHERE symbol = %s;
         """
@@ -51,7 +55,10 @@ def get_stock_data(symbol):
                 "price": result[2],
                 "volume": result[3],
                 "market_cap": result[4],
-                "last_trade_time": result[5]
+                "last_trade_time": result[5],
+                "percentage_change": result[6],
+                "daily_price_range": result[7],
+                "fiftytwo_week_range": result[8]               
             }
             return jsonify(stock_data), 200
         else:
@@ -71,9 +78,15 @@ def get_stock_data(symbol):
 def trigger_etl(symbol):
     """
     Trigger the ETL process for a given stock symbol.
+    This route will trigger the ETL process asynchronously to prevent blocking.
     """
     try:
-        run_etl(symbol)
-        return jsonify({"message": f"ETL process triggered for {symbol}."}), 200
+        # Start the ETL process in a separate thread to avoid blocking the API
+        etl_thread = threading.Thread(target=run_etl, args=(symbol,))
+        etl_thread.start()
+
+        # Return a response indicating that the ETL process has been triggered
+        return jsonify({"message": f"ETL process triggered for {symbol}. It will complete asynchronously."}), 200
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        logger.error(f"Error triggering ETL for {symbol}: {e}")
+        return jsonify({"error": f"Failed to trigger ETL for {symbol}: {str(e)}"}), 500

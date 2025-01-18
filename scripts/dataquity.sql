@@ -19,3 +19,10 @@ CREATE TABLE stocks (
 );
 
 SELECT * FROM stocks;
+
+ALTER TABLE stocks
+ADD COLUMN percentage_change FLOAT,
+ADD COLUMN daily_price_range FLOAT,
+ADD COLUMN fiftytwo_week_range FLOAT;
+
+
