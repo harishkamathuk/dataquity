@@ -75,15 +75,16 @@ def get_stock_data(symbol):
 def trigger_etl(symbol):
     """
     Trigger the ETL process for a given stock symbol.
-    This route will trigger the ETL process asynchronously to prevent blocking.
+    This route will run the ETL process synchronously to ensure completion before returning a response.
     """
     try:
-        # Start the ETL process in a separate thread to avoid blocking the API
-        etl_thread = threading.Thread(target=run_etl, args=(symbol,))
-        etl_thread.start()
+        # Run the ETL process synchronously
+        run_etl(symbol)
 
-        # Return a response indicating that the ETL process has been triggered
-        return jsonify({"message": f"ETL process triggered for {symbol}. It will complete asynchronously."}), 200
+        # Return a response indicating that the ETL process has completed successfully
+        return jsonify({"message": f"ETL process completed for {symbol}."}), 200
     except Exception as e:
-        logger.error(f"Error triggering ETL for {symbol}: {e}")
-        return jsonify({"error": f"Failed to trigger ETL for {symbol}: {str(e)}"}), 500
+        logger.error(f"Error running ETL for {symbol}: {e}")
+        return jsonify({"error": f"Failed to run ETL for {symbol}: {str(e)}"}), 500
+    
+    

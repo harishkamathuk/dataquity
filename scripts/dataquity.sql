@@ -8,13 +8,16 @@
 -- 
 -- Table: stocks
 -- Description: This table stores information about stocks.
-CREATE TABLE stocks (
+CREATE TABLE IF NOT EXISTS stocks (
     id SERIAL PRIMARY KEY,
     symbol VARCHAR(10),
     company_name VARCHAR(255),
     price NUMERIC,
     volume INTEGER,
     market_cap NUMERIC,
+    percentage_change FLOAT,
+    daily_price_range FLOAT,
+    fiftytwo_week_range FLOAT,
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
