@@ -29,6 +29,7 @@ from config import Config
 from app.data_transformer import transform_stock_data
 from app.fetch_stock_data import fetch_stock_data
 from app.stock_data_service import insert_stock_data
+from app.__utils.file_utils import save_data_to_file, load_data_from_file, clean_temp_files
 from app.__utils.logger import get_logger
 
 # get logger
@@ -51,25 +52,37 @@ def run_etl(symbol):
     """
     start_time = time.time()
     try:
+
         # Extract: Fetch raw data
         raw_data = fetch_stock_data(symbol)
-
         if raw_data:
-            # Transform: Apply transformation logic
+            # Save raw data to file for debugging or reprocessing
+            raw_file = save_data_to_file(f"{symbol}_raw_data.json", raw_data)
+            logger.info(f"Raw data saved to file: {raw_file}")
+
+            # Transform data
             transformed_data = transform_stock_data(raw_data)
             
-            # Load: Insert transformed data into the database
+            # Save transformed data to file for debugging or reprocessing
+            transformed_file = save_data_to_file(f"{symbol}_transformed_data.json", transformed_data)
+            logger.info(f"Transformed data saved to file: {transformed_file}")
+
+            # Load data into database
             insert_stock_data(symbol, transformed_data)
-            
-            logger.info(f"Successfully processed {symbol}")
-        else:
-            logger.warning(f"No data found for symbol: {symbol}")
+            logger.info(f"Successfully processed {symbol}")            
 
     except Exception as e:
         logger.error(f"Error processing {symbol}: {e}")
     finally:
         end_time = time.time()
         logger.info(f"ETL process for {symbol} completed in {end_time - start_time:.2f} seconds")
+
+        # Clean up temporary files after the ETL process if required
+        if Config.CLEAN_TEMP_DIR: 
+            logger.info(f"Clean temp dir is set to: {Config.CLEAN_TEMP_DIR}")
+            logger.info(f"Cleaning temporary files...")
+            clean_temp_files()
+
 
 if __name__ == "__main__":
     symbol = "MSFT"  # Example: Apple stock

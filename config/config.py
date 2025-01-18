@@ -20,7 +20,9 @@ class Config:
     
     # Temporary file storage path
     TEMP_DIR = os.getenv("TEMP_DIR", "data/temp/")
-    
+    # Get CLEAN_TEMP_DIR from the environment and cast to boolean
+    CLEAN_TEMP_DIR = os.getenv("CLEAN_TEMP_DIR", "False").lower() in ['true', '1', 't', 'y', 'yes']
+        
     @staticmethod
     def validate():
         """Validate required environment variables."""

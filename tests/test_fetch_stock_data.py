@@ -7,7 +7,7 @@ class TestFetchStockData(unittest.TestCase):
         symbol = "AAPL"
         data = fetch_stock_data(symbol)
         self.assertIsInstance(data, dict)
-        self.assertIn('symbol', data)
+        self.assertIn('ticker', data)
 
     def test_fetch_stock_data_error(self):
         symbol = "INVALID"

@@ -24,6 +24,10 @@ class DatabaseConnectionManager:
         if not db_url:
             raise Exception("Database URL not found in environment variables.")
 
+        # Ensure SSL mode is enabled by adding sslmode=require
+        if "sslmode" not in db_url:
+            db_url += "?sslmode=require"
+            
         # Initialize a connection pool
         self._pool = psycopg2.pool.SimpleConnectionPool(
             minconn=1,
