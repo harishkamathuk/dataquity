@@ -6,9 +6,6 @@ import logging
 from config import Config
 from app.__utils.logger import get_logger
 
-# Load environment variables
-load_dotenv()
-
 # get logger
 logger = get_logger(__name__)
 

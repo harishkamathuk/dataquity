@@ -1,11 +1,8 @@
 import threading  # Import threading for asynchronous ETL processing
 from flask import Blueprint, jsonify, request
-
 from config import Config
 
-from app.stock_data_service import insert_stock_data
 from app.etl_pipeline import run_etl
-
 from app.__utils.logger import get_logger
 from app.__utils.db_connection_manager import DatabaseConnectionManager
 

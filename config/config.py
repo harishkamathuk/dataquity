@@ -7,6 +7,9 @@ load_dotenv()
 class Config:
     """Configuration class to centralize app settings."""
     
+    # Application Environment (development, production, testing)
+    FLASK_ENV = os.getenv("FLASK_ENV", "development")
+    
     # Database configuration
     DATABASE_URL = os.getenv("DATABASE_URL")
     
