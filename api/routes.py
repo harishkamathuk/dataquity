@@ -3,8 +3,8 @@ from flask import Blueprint, jsonify, request
 from config import Config
 
 from app.etl_pipeline import run_etl
-from app.__utils.logger import get_logger
-from app.__utils.db_connection_manager import DatabaseConnectionManager
+from app.utils.logger import get_logger
+from app.utils.db_connection_manager import DatabaseConnectionManager
 
 # Get logger instance
 logger = get_logger(__name__)

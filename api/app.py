@@ -8,7 +8,7 @@ from waitress import serve
 
 from api.routes import api_routes
 from config import Config
-from app.__utils.logger import get_logger
+from app.utils.logger import get_logger
 
 # get logger
 logger = get_logger(__name__)

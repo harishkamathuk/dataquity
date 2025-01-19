@@ -2,8 +2,8 @@ from dotenv import load_dotenv
 import os
 import psycopg2
 
-from app.__utils.logger import get_logger
-from app.__utils.db_connection_manager import DatabaseConnectionManager
+from app.utils.logger import get_logger
+from app.utils.db_connection_manager import DatabaseConnectionManager
 
 # Load environment variables
 load_dotenv()

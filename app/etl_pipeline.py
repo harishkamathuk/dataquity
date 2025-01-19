@@ -29,8 +29,8 @@ from config import Config
 from app.data_transformer import transform_stock_data
 from app.fetch_stock_data import fetch_stock_data
 from app.stock_data_service import insert_stock_data
-from app.__utils.file_utils import save_data_to_file, load_data_from_file, clean_temp_files
-from app.__utils.logger import get_logger
+from app.utils.file_utils import save_data_to_file, load_data_from_file, clean_temp_files
+from app.utils.logger import get_logger
 
 # get logger
 logger = get_logger(__name__)
