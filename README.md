@@ -136,3 +136,17 @@ git add README.md
 git commit -m "📚 Update README to reflect migration from Vercel to Render"
 git push origin main
 ```
+
+## Archived MVP Implementation
+
+The initial MVP implementation has been archived as follows:
+- **Branch**: `mvp-archive` — Contains the full history and codebase of the MVP. Use this branch if updates or bug fixes are needed for the MVP.
+- **Tag**: `v1.0-mvp` — Marks the state of the repository when the MVP was finalized. This is a reference for the completed MVP milestone.
+
+To check out the MVP:
+```bash
+# Switch to the archived branch
+git checkout mvp-archive
+
+# OR: View the archived state via the tag
+git checkout v1.0-mvp
